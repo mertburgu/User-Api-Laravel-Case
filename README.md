@@ -16,18 +16,25 @@ yapmalıyım. Nesne varlık kontrolü sağlanmazsa istek hatalı demektir.
 edilmelidir.
 
 public function AuthorizationMiddleware($request, Closure $next) {
+
 // Yukarıda belirtilen işlemlerin yapılacağı middleware.
+
 return $next($request);
+
 }
 
-Route::prefix('user')->group(['middleware' =>
-['middleware.authorization']], function() {
-Route::post('/insert', 'UserController@insert');
-Route::get('/list', 'UserController@list');
-Route::put('/update/{user}', 'UserController@update');
-Route::delete('/delete/{user}', 'UserController@delete');
-Route::delete('/destroy/{user}', 'UserController@destroy'); //
-İstisna olarak, bu route'un, verilen modeli tamamen silmesini istiyorum.
+Route::prefix('user')->group(['middleware' => ['middleware.authorization']], function() {
+
+    Route::post('/insert', 'UserController@insert');
+    
+    Route::get('/list', 'UserController@list');
+    
+    Route::put('/update/{user}', 'UserController@update');
+    
+    Route::delete('/delete/{user}', 'UserController@delete');
+    
+    Route::delete('/destroy/{user}', 'UserController@destroy'); //İstisna olarak, bu route'un, verilen modeli tamamen silmesini istiyorum.
+
 });
 
 ## Kısıtlamalar
