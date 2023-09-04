@@ -5,11 +5,15 @@
 Aşağıda belirtilen route group’larına Authorization header'ında 'xxxxx' key'i
 bulunmadan istek atıldığında,
 kişinin isteğini geri çevirerek geldiği yere geri göndermeliyim.
+
 Aynı zamanda bu istekte bulunan kişinin IP'sini, veritabanında tuttuğum 'Logs' adlı
 tabloya kaydetmeliyim.
+
 Eğer gereken koşullar sağlanır ve istekte sorun olmazsa, verilen route group'a ait
 mantıklı controller’lar yazmalıyım.
-Route'larda URL üzerinden ID parametresi aldığım takdirde, Model binding işlemi
+
+Route'larda URL üzerinden ID parametresi aldığım takdirde, Model binding işl
+emi
 yapmalıyım. Nesne varlık kontrolü sağlanmazsa istek hatalı demektir.
 
 // Örnek middleware tanımlaması. Bu şekilde tanımlama yapılarak devam
@@ -17,9 +21,9 @@ edilmelidir.
 
 public function AuthorizationMiddleware($request, Closure $next) {
 
-// Yukarıda belirtilen işlemlerin yapılacağı middleware.
-
-return $next($request);
+    // Yukarıda belirtilen işlemlerin yapılacağı middleware.
+    
+    return $next($request);
 
 }
 
