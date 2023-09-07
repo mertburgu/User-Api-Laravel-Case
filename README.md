@@ -47,3 +47,7 @@ edilmelidir.
 olarak, o IP'nin diğer hiç bir url ye erişmemesi gerekir.
 2. Belirtilen UserModel'ı için bir Request sınıfı hazırlanacak ve gönderilecek
 değerler validation'dan geçecek.
+
+
+### Postman api dökümanı
+https://documenter.getpostman.com/view/133512/2s9YBz3FV3
