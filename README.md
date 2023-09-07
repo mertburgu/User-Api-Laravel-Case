@@ -1,4 +1,4 @@
-# Vatansoft Laravel Case
+# Laravel Case
 
 ## Case İşlemleri
 
