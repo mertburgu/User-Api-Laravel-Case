@@ -9,22 +9,23 @@ use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-    use SoftDeletes;
-
     public function list()
     {
         $users = User::all();
         return response()->json(['data' => $users], 200);
     }
 
+    public function show($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json(['message' => 'Kullanıcı bulunamadı'], 404);
+        }
+        return response()->json(['data' => $user], 200);
+    }
+
     public function insert(UserRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'username' => 'required|unique:users',
-            'password' => 'required|min:6',
-        ]);
 
         try {
             $user = new User;
@@ -86,7 +87,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::withTrashed()->find($id);
 
         if (!$user) {
             return response()->json(['message' => 'Kullanıcı bulunamadı'], 404);

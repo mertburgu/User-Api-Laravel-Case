@@ -15,10 +15,10 @@ class AuthorizationMiddleware
         $log->ip = $request->ip();
         $log->save();
 
-        if ($request->header('Authorization') ===  env('API_KEY')) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if ($request->header('Authorization') === env('API_KEY')) {
+            return $next($request);
         }
 
-        return $next($request);
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
 }
